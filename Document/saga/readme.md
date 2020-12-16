@@ -1,0 +1,4 @@
+###Saga事务实现说明
+sharding-jdbc的saga事务实现是基于华为开源ServiceComb项目做的,关于项目具体文档说明请上apache官网查阅，
+它已经是顶级开源项目,sharding-jdbc里记录分支事务事件是采用的DB进行sagalog的持久化存储,大家需要导入schema-init.sql
+到你记录sagalog的库当中(这个库最好单独独立).然后再在saga.properties进行相关配置

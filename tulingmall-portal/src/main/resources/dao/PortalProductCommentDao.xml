@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tuling.tulingmall.portal.dao.PortalProductCommentDao">
+    <resultMap id="productCommentMap" type="com.tuling.tulingmall.portal.domain.PmsCommentParam"
+               extends="com.tuling.tulingmall.mapper.PmsCommentMapper.ResultMapWithBLOBs">
+        <collection property="pmsCommentReplayList" columnPrefix="cr_"
+                    resultMap="com.tuling.tulingmall.mapper.PmsCommentReplayMapper.BaseResultMap">
+        </collection>
+    </resultMap>
+    <select id="getCommentList" parameterType="java.lang.Long" resultMap="productCommentMap" >
+        SELECT
+        pc.*,
+        cr.id cr_id,
+        cr.comment_id cr_comment_id,
+        cr.member_nick_name cr_member_nick_name,
+        cr.member_icon cr_member_icon,
+        cr.content cr_content,
+        cr.create_time cr_create_time,
+        cr.type cr_type
+        FROM
+        pms_comment pc
+        LEFT JOIN
+        pms_comment_replay cr ON pc.id = cr.comment_id
+        WHERE
+        pc.show_status = 0 and pc.product_id = #{productId}
+    </select>
+
+    <select id="selectUserOrder" resultType="java.lang.Integer">
+      select count(1) from (select o.id,item.id item_id from oms_order o
+      LEFT JOIN oms_order_item item on o.id=item.order_id
+      where o.member_id=#{userId} and item.product_id=#{productId} and o.delete_status=0 and o.status=3) t
+    </select>
+
+</mapper>

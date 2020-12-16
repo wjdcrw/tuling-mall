@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: tulingmall-authcenter-test
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 39.107.45.29:8848
+        file-extension: yml
+        shared-dataids: tulingmall-db-common.yml,tulingmall-nacos.yml
+        refreshable-dataids: tulingmall-db-common.yml,tulingmall-nacos.yml
+logging:
+  level:
+    com:
+     alibaba:
+      cloud:
+        nacos:
+          client: warn

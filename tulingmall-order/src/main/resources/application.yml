@@ -1,0 +1,89 @@
+server:
+  port: 8844
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.232.198:3306/micromall?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+    druid:
+      initial-size: 5 #连接池初始化大小
+      min-idle: 10 #最小空闲连接数
+      max-active: 20 #最大连接数
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+      stat-view-servlet: #访问监控网页的登录用户名和密码
+        login-username: druid
+        login-password: druid
+
+  redis:
+    host: 192.168.232.198 # Redis服务器地址
+    database: 0 # Redis数据库索引（默认为0）
+    port: 6379 # Redis服务器连接端口
+    password: # Redis服务器连接密码（默认为空）
+    jedis:
+      pool:
+        max-active: 8 # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: -1ms # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 8 # 连接池中的最大空闲连接
+        min-idle: 0 # 连接池中的最小空闲连接
+    timeout: 3000ms # 连接超时时间（毫秒）
+  rabbitmq:
+    host: 192.168.232.198
+    port: 5672
+    virtual-host: /tulingmall
+    username: admin
+    password: admin
+    publisher-confirms: true #如果对异步消息需要回调必须设置为true
+  application:
+    name: tulingmall-order
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.232.198:8848
+  main:
+    allow-bean-definition-overriding: true
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
+        requestInterceptors:
+          - com.tuling.tulingmall.feignapi.interceptor.HeaderInterceptor
+        readTimeout: 3000
+        connectTimeout: 3000
+logging:
+  level:
+    com:
+      tuling:
+        tulingmall:
+          feignapi:
+            ums:
+              UmsMemberReceiveAddressFeignApi: debug
+
+# 自定义redis键值
+redis:
+  key:
+    prefix:
+      authCode: "portal:authCode:"
+      orderId: "portal:orderId:"
+    expire:
+      authCode: 90 # 验证码超期时间
+# 自定义消息队列名称
+rabbitmq:
+  queue:
+    name:
+      cancelOrder: cancelOrderQueue
+#支付-当面付qrcode存储与访问路径设置
+trade:
+  zhifu:
+    qrcode:
+      aliPayPath: /alipay
+      weChatPath: /wechat
+      storePath: C:/temp/qr-code
+      httpBasePath: /static/qrcode
+      paySuccessCallBack: http://yangguo.natapp1.cc/order/paySuccess

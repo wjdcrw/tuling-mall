@@ -1,0 +1,65 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/micromall?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: Zw726515
+    druid:
+      initial-size: 5 #连接池初始化大小
+      min-idle: 10 #最小空闲连接数
+      max-active: 20 #最大连接数
+      max-wait: 60000
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+      stat-view-servlet: #访问监控网页的登录用户名和密码
+        login-username: druid
+        login-password: druid
+      validation-query: SELECT 1 FROM DUAL
+  rabbitmq: #rabbitmq相关配置
+    host: 47.111.191.111
+    port: 5672
+    username: guest
+    password: guest
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mall-admin-secret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: Bearer  #JWT负载中拿到开头
+secure:
+  ignored:
+    urls: #安全路径白名单
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /webjars/springfox-swagger-ui/**
+      - /actuator/**
+      - /druid/**
+      - /admin/login
+      - /admin/register
+      - /upload/product/**
+aliyun:
+  oss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com # oss对外服务的访问域名
+    accessKeyId: LTAI4FpbYgfc4aFuYb6Hmsmx # 访问身份验证中用到用户标识
+    accessKeySecret: LxBceRPR9pd7S6R46dd6ce2avxfVjZ # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    bucketName: tuling-mall # oss的存储空间
+    policy:
+      expire: 300 # 签名有效期(S)
+    maxSize: 10 # 上传文件大小(M)
+    callback: http://yangguo.natapp1.cc/aliyun/oss/callback # 文件上传成功后的回调地址
+    dir:
+      prefix: tulingmall/images/ # 上传文件夹路径前缀
+
+upload:
+  product:
+    images: D:/temp/product/images

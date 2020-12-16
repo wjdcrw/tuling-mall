@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.232.198:8848
+        file-extension: yml
+        shared-dataids: tulingmall-nacos.yml
+        refreshable-dataids: tulingmall-nacos.yml
+  application:
+    name: tulingmall-order
+  profiles:
+    active: dev

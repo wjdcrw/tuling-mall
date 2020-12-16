@@ -1,0 +1,23 @@
+
+
+server:
+  port: 8888
+
+tuling:
+  getway:
+    shouldSkipUrls:
+      - /oauth/**
+      - /sso/**
+spring:
+  application:
+    name: tulingmall-getway-demo
+  cloud:
+    gateway:
+      routes:
+        - id: tulingmall-authcenter-demo
+          uri: lb://tulingmall-authcenter-demo
+          predicates:
+            - Path=/oauth/**
+    nacos:
+      discovery:
+        server-addr: 39.107.45.29:8848

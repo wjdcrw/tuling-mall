@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tuling.tulingmall.portal.dao.PortalMemberInfoDao">
+    <resultMap id="PortalMemberInfoMap" type="com.tuling.tulingmall.portal.domain.PortalMemberInfo"
+               extends="com.tuling.tulingmall.mapper.UmsMemberMapper.BaseResultMap">
+        <association property="umsMemberLevel" resultMap="com.tuling.tulingmall.mapper.UmsMemberLevelMapper.BaseResultMap" columnPrefix="lv_">
+        </association>
+    </resultMap>
+    <select id="getMemberInfo" resultMap="PortalMemberInfoMap">
+        SELECT
+            um.id,
+            um.member_level_id,
+            um.username,
+            um.nickname,
+            um.phone,
+            um.status,
+            um.create_time,
+            um.icon,
+            um.gender,
+            um.birthday,
+            um.city,
+            um.job,
+            um.personalized_signature,
+            um.source_type,
+            um.integration,
+            um.growth,
+            um.luckey_count,
+            um.history_integration,
+            lv.id lv_id,
+            lv.name lv_name,
+            lv.growth_point lv_growth_point,
+            lv.default_status lv_default_status,
+            lv.free_freight_point lv_free_freight_point,
+            lv.comment_growth_point lv_comment_growth_point,
+            lv.priviledge_free_freight lv_priviledge_free_freight,
+            lv.priviledge_sign_in lv_priviledge_sign_in,
+            lv.priviledge_comment lv_priviledge_comment,
+            lv.priviledge_promotion lv_priviledge_promotion,
+            lv.priviledge_member_price lv_priviledge_member_price,
+            lv.priviledge_birthday lv_priviledge_birthday
+        FROM
+            ums_member um
+        LEFT JOIN
+            ums_member_level lv on lv.id = um.member_level_id
+        WHERE um.id = #{memberId} AND um.status = 1
+    </select>
+</mapper>

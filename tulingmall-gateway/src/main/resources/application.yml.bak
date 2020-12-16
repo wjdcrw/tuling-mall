@@ -1,0 +1,53 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: tulingmall-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+          enabled: true
+      routes:
+        - id: tulingmall-authcenter
+          uri: lb://tulingmall-authcenter
+          predicates:
+            - Path=/oauth/**
+        - id: tulingmall-member
+          uri: lb://tulingmall-member
+          predicates:
+            - Path=/sso/**,/member/**
+        - id: tulingmall-order
+          uri: lb://tulingmall-order
+          predicates:
+            - Path=/cart/**,/order/**
+        - id: tulingmall-product
+          uri: lb://tulingmall-product
+          predicates:
+            - Path=/pms/**
+        - id: tulingmall-coupons
+          uri: lb://tulingmall-coupons
+          predicates:
+            - Path=/coupon/**
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+management: #开启SpringBoot Admin的监控
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+tuling:
+  gateway:
+    shouldSkipUrls:
+      - /oauth/**
+      - /sso/**
