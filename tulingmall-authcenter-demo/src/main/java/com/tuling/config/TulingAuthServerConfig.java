@@ -54,16 +54,19 @@ public class TulingAuthServerConfig extends AuthorizationServerConfigurerAdapter
     private AuthenticationManager authenticationManager;
 
     /**
-     * 保存第三方客户端的
+     * 认证服务器能够给哪些 客户端颁发token  我们需要把客户端的配置 存储到数据库中 可以基于内存存储和db存储
      * @param clients
      * @throws Exception
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.withClientDetails(clientDetails());
-
     }
 
+    /**
+     * 用于查找我们第三方客户端的组件 主要用于查找 数据库表 oauth_client_details
+     * @return
+     */
     @Bean
     public ClientDetailsService clientDetails(){
         return new JdbcClientDetailsService(dataSource);
@@ -115,9 +118,9 @@ public class TulingAuthServerConfig extends AuthorizationServerConfigurerAdapter
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         TokenEnhancerChain tokenEnhancerChain=new TokenEnhancerChain();
         tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tulingTokenEnhancer(),jwtAccessTokenConverter()));
-        endpoints.tokenStore(tokenStore())
+        endpoints.tokenStore(tokenStore())//授权服务器颁发的token 怎么存储的
                 .tokenEnhancer(tokenEnhancerChain)
-                .userDetailsService(tulingUserDetailService)
+                .userDetailsService(tulingUserDetailService)//用户来获取token的时候需要进行账号密码
                 .authenticationManager(authenticationManager);
     }
 }

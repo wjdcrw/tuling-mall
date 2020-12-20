@@ -30,6 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 方法实现说明:用于构建用户认证组件,需要传递userDetailsService和密码加密器
+     * 控制tulingUserDetailService去查询数据库
      * @author:smlz
      * @param auth
      * @return:
