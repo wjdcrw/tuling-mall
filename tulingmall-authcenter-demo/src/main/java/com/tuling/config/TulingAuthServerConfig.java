@@ -123,4 +123,21 @@ public class TulingAuthServerConfig extends AuthorizationServerConfigurerAdapter
                 .userDetailsService(tulingUserDetailService)//用户来获取token的时候需要进行账号密码
                 .authenticationManager(authenticationManager);
     }
+
+
+    /**
+     * @Description:  授权服务器安全配置
+     * @Param: [security]
+     * @return: void
+     * @Author: dcr
+     * @Date: 2021/1/9 16:28
+     */
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        //第三方客户端校验token需要带入 clientId 和clientSecret来校验
+        security .checkTokenAccess("isAuthenticated()")
+                .tokenKeyAccess("isAuthenticated()");//来获取我们的tokenKey需要带入clientId,clientSecret
+
+        security.allowFormAuthenticationForClients();
+    }
 }

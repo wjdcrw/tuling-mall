@@ -33,9 +33,9 @@ import java.util.Arrays;
 * @createDate: 2020/1/21 21:48
 * @version: 1.0
 */
-//@Configuration
-//@EnableAuthorizationServer
-//@EnableConfigurationProperties(value = JwtCAProperties.class)
+@Configuration
+@EnableAuthorizationServer
+@EnableConfigurationProperties(value = JwtCAProperties.class)
 public class TulingAuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
 
