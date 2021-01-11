@@ -8,8 +8,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 public class TulingmallAuthcenterTestApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(TulingmallAuthcenterTestApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(TulingmallAuthcenterTestApplication.class, args);
+	}
 
 }

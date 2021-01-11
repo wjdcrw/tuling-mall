@@ -1,6 +1,6 @@
 package com.tuling.config;
 
-import com.tuling.component.TulingUserDetailService;
+import com.tuling.tulingmall.service.TulingUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,49 +13,62 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * @Description: 授权中心安全配置
- * @Author dcr
- * @Date 2020/12/13 10:05
+ * @vlog: 高于生活，源于生活
+ * @desc: 类的描述:授权中心安全配置
+ * @author: smlz
+ * @createDate: 2019/12/20 16:08
+ * @version: 1.0
  */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    
+
     @Autowired
     private TulingUserDetailService tulingUserDetailService;
 
-    /** 
-     * @Description: 用于构建用户认证组件，需要传递tulingUserDetailService和密码加密器
-     * @Param: [auth] 
-     * @return: void 
-     * @Author: dcr
-     * @Date: 2020/12/13 10:10
+
+
+    /**
+     * 方法实现说明:用于构建用户认证组件,需要传递userDetailsService和密码加密器
+     * 控制tulingUserDetailService去查询数据库
+     * @author:smlz
+     * @param auth
+     * @return:
+     * @exception:
+     * @date:2019/12/25 14:31
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(tulingUserDetailService).passwordEncoder(passwordEncoder());
     }
 
-    /** 
-     * @Description: 设置前台静态资源不拦截
-     * @Param: [web] 
-     * @return: void 
-     * @Author: dcr
-     * @Date: 2020/12/13 10:15
+
+    /**
+     * 设置前台静态资源不拦截
+     * @param web
+     * @throws Exception
      */
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/assets/**", "/css/**", "/images/**");
     }
 
+
+
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManager();
+        return super.authenticationManagerBean();
     }
+
+    public static void main(String[] args) {
+        System.out.println(new BCryptPasswordEncoder().encode("test"));
+    }
+
 }
+

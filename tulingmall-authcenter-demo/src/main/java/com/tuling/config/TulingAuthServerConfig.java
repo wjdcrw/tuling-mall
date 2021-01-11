@@ -72,10 +72,10 @@ public class TulingAuthServerConfig extends AuthorizationServerConfigurerAdapter
         return new JdbcClientDetailsService(dataSource);
     }
 
-    /** 
+    /**
      * @Description: 我们颁发的token通过jwt存储。四种存储方式：内存、数据库、redis、JWT
-     * @Param: [] 
-     * @return: org.springframework.security.oauth2.provider.token.TokenStore 
+     * @Param: []
+     * @return: org.springframework.security.oauth2.provider.token.TokenStore
      * @Author: dcr
      * @Date: 2020/12/12 17:59
      */
@@ -107,10 +107,10 @@ public class TulingAuthServerConfig extends AuthorizationServerConfigurerAdapter
         return new TulingTokenEnhancer();
     }
 
-    /** 
+    /**
      * @Description: 授权服务器的配置的配置
-     * @Param: [endpoints] 
-     * @return: void 
+     * @Param: [endpoints]
+     * @return: void
      * @Author: dcr
      * @Date: 2020/12/13 10:30
      */

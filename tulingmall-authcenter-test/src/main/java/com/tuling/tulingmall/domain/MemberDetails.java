@@ -1,4 +1,4 @@
-package com.tuling.domain;
+package com.tuling.tulingmall.domain;
 
 import com.tuling.tulingmall.model.UmsMember;
 import org.springframework.security.core.GrantedAuthority;
