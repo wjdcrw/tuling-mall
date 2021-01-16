@@ -14,7 +14,7 @@ spring:
         login-username: druid
         login-password: druid
   application:
-    name: tulingmall-authcenter
+    name: tulingmall-authcenter-demo
   cloud:
     nacos:
       discovery:

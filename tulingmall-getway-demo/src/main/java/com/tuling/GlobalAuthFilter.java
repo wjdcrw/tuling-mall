@@ -29,13 +29,15 @@ public class GlobalAuthFilter implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        //当前请求的uri
         String currentUrl = exchange.getRequest().getURI().getPath();
 
         // 不应该拦截的路径
         if(shouldSkip(currentUrl)){
-
+            log.info("跳过拦截路径:{}",currentUrl);
+            return chain.filter(exchange);
         }
-        return null;
+        return chain.filter(exchange);
     }
 
     /** 

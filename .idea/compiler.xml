@@ -6,12 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tulingmall-authcenter" />
-        <module name="tulingmall-authcenter-demo" />
         <module name="tulingmall-authcenter-test" />
+        <module name="tulingmall-authcenter" />
         <module name="tulingmall-common" />
-        <module name="tulingmall-getway-demo" />
         <module name="tulingmall-mbg" />
+        <module name="tulingmall-getway-demo" />
+        <module name="tulingmall-authcenter-demo" />
         <module name="tulingmall-security" />
       </profile>
     </annotationProcessing>

@@ -1,5 +1,3 @@
-
-
 server:
   port: 8888
 
@@ -13,6 +11,10 @@ spring:
     name: tulingmall-getway-demo
   cloud:
     gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+          enabled: true
       routes:
         - id: tulingmall-authcenter-demo
           uri: lb://tulingmall-authcenter-demo
