@@ -21,6 +21,7 @@
 		<module>tulingmall-security</module>
 		<module>tulingmall-authcenter</module>
 		<module>tulingmall-authcenter-demo</module>
+		<module>tulingmall-portal</module>
 	</modules>
 
 	<properties>

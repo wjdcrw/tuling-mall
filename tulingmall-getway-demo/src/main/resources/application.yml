@@ -20,6 +20,10 @@ spring:
           uri: lb://tulingmall-authcenter-demo
           predicates:
             - Path=/oauth/**
+        - id: tulingmall-member-demo
+          uri: lb://tulingmall-member-demo
+          predicates:
+            - Path=/sso/**
     nacos:
       discovery:
         server-addr: 39.107.45.29:8848
