@@ -1,4 +1,4 @@
-package com.tuling.tulingmall.constant;
+package com.tuling.constant;
 
 /**
 * @vlog: 高于生活，源于生活

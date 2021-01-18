@@ -1,4 +1,4 @@
-package com.tuling.tulingmall.service.impl;
+package com.tuling.service.impl;
 
 import com.tuling.tulingmall.common.api.CommonResult;
 import com.tuling.tulingmall.common.api.TokenInfo;
@@ -9,7 +9,7 @@ import com.tuling.tulingmall.model.UmsMemberExample;
 import com.tuling.tulingmall.model.UmsMemberLevel;
 import com.tuling.tulingmall.model.UmsMemberLevelExample;
 
-import com.tuling.tulingmall.constant.MDA;
+import com.tuling.constant.MDA;
 import com.tuling.tulingmall.service.RedisService;
 import com.tuling.tulingmall.service.UmsMemberService;
 import org.slf4j.Logger;
