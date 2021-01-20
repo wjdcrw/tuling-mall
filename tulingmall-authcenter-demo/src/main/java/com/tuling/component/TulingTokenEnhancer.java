@@ -28,7 +28,7 @@ public class TulingTokenEnhancer implements TokenEnhancer {
         additionalInfo.put("integration",memberDetails.getUmsMember().getIntegration());
 
         retMap.put("additionalInfo",additionalInfo);
-        ((DefaultOAuth2AccessToken)oAuth2AccessToken).setAdditionalInformation(additionalInfo);
+        ((DefaultOAuth2AccessToken)oAuth2AccessToken).setAdditionalInformation(retMap);
         return oAuth2AccessToken;
     }
 }
