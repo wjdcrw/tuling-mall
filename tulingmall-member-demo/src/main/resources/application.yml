@@ -6,12 +6,12 @@ spring:
     username: admin
     password: Admin1qaz!@#$
     druid:
-      initial-size: 5 #Á¬½Ó³Ø³õÊ¼»¯´óĞ¡
-      min-idle: 10 #×îĞ¡¿ÕÏĞÁ¬½ÓÊı
-      max-active: 20 #×î´óÁ¬½ÓÊı
+      initial-size: 5 #è¿æ¥æ± åˆå§‹åŒ–å¤§å°
+      min-idle: 10 #æœ€å°ç©ºé—²è¿æ¥æ•°
+      max-active: 20 #æœ€å¤§è¿æ¥æ•°
       web-stat-filter:
-        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #²»Í³¼ÆÕâĞ©ÇëÇóÊı¾İ
-      stat-view-servlet: #·ÃÎÊ¼à¿ØÍøÒ³µÄµÇÂ¼ÓÃ»§ÃûºÍÃÜÂë
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #ä¸ç»Ÿè®¡è¿™äº›è¯·æ±‚æ•°æ®
+      stat-view-servlet: #è®¿é—®ç›‘æ§ç½‘é¡µçš„ç™»å½•ç”¨æˆ·åå’Œå¯†ç 
         login-username: druid
         login-password: druid
   data:
@@ -20,24 +20,24 @@ spring:
       port: 27017
       database: micromall
   redis:
-    host: 39.107.45.29 # Redis·şÎñÆ÷µØÖ·
-    database: 0 # RedisÊı¾İ¿âË÷Òı£¨Ä¬ÈÏÎª0£©
-    port: 16380 # Redis·şÎñÆ÷Á¬½Ó¶Ë¿Ú
-    password: AdminRedis # Redis·şÎñÆ÷Á¬½ÓÃÜÂë£¨Ä¬ÈÏÎª¿Õ£©
+    host: 39.107.45.29 # RedisæœåŠ¡å™¨åœ°å€
+    database: 0 # Redisæ•°æ®åº“ç´¢å¼•ï¼ˆé»˜è®¤ä¸º0ï¼‰
+    port: 16380 # RedisæœåŠ¡å™¨è¿æ¥ç«¯å£
+    password: AdminRedis # RedisæœåŠ¡å™¨è¿æ¥å¯†ç ï¼ˆé»˜è®¤ä¸ºç©ºï¼‰
     jedis:
       pool:
-        max-active: 8 # Á¬½Ó³Ø×î´óÁ¬½ÓÊı£¨Ê¹ÓÃ¸ºÖµ±íÊ¾Ã»ÓĞÏŞÖÆ£©
-        max-wait: -1ms # Á¬½Ó³Ø×î´ó×èÈûµÈ´ıÊ±¼ä£¨Ê¹ÓÃ¸ºÖµ±íÊ¾Ã»ÓĞÏŞÖÆ£©
-        max-idle: 8 # Á¬½Ó³ØÖĞµÄ×î´ó¿ÕÏĞÁ¬½Ó
-        min-idle: 0 # Á¬½Ó³ØÖĞµÄ×îĞ¡¿ÕÏĞÁ¬½Ó
-    timeout: 3000ms # Á¬½Ó³¬Ê±Ê±¼ä£¨ºÁÃë£©
+        max-active: 8 # è¿æ¥æ± æœ€å¤§è¿æ¥æ•°ï¼ˆä½¿ç”¨è´Ÿå€¼è¡¨ç¤ºæ²¡æœ‰é™åˆ¶ï¼‰
+        max-wait: -1ms # è¿æ¥æ± æœ€å¤§é˜»å¡ç­‰å¾…æ—¶é—´ï¼ˆä½¿ç”¨è´Ÿå€¼è¡¨ç¤ºæ²¡æœ‰é™åˆ¶ï¼‰
+        max-idle: 8 # è¿æ¥æ± ä¸­çš„æœ€å¤§ç©ºé—²è¿æ¥
+        min-idle: 0 # è¿æ¥æ± ä¸­çš„æœ€å°ç©ºé—²è¿æ¥
+    timeout: 3000ms # è¿æ¥è¶…æ—¶æ—¶é—´ï¼ˆæ¯«ç§’ï¼‰
   rabbitmq:
     host: 39.107.45.29
     port: 5672
     virtual-host: tulingmall
     username: smlz
     password: smlz
-    publisher-confirms: true #Èç¹û¶ÔÒì²½ÏûÏ¢ĞèÒª»Øµ÷±ØĞëÉèÖÃÎªtrue
+    publisher-confirms: true #å¦‚æœå¯¹å¼‚æ­¥æ¶ˆæ¯éœ€è¦å›è°ƒå¿…é¡»è®¾ç½®ä¸ºtrue
   application:
     name: tulingmall-member-demo
   cloud:
@@ -49,7 +49,7 @@ mybatis:
   mapper-locations:
     - classpath:dao/*.xml
     - classpath*:com/**/mapper/*.xml
-management: #¿ªÆôSpringBoot AdminµÄ¼à¿Ø
+management: #å¼€å¯SpringBoot Adminçš„ç›‘æ§
   endpoints:
     web:
       exposure:
@@ -58,20 +58,16 @@ management: #¿ªÆôSpringBoot AdminµÄ¼à¿Ø
     health:
       show-details: always
 jwt:
-  tokenHeader: Authorization #JWT´æ´¢µÄÇëÇóÍ·
-  secret: mall-portal-secret #JWT¼Ó½âÃÜÊ¹ÓÃµÄÃÜÔ¿
-  expiration: 604800 #JWTµÄ³¬ÆÚÏŞÊ±¼ä(60*60*24)
-  tokenHead: bearer #JWT¸ºÔØÖĞÄÃµ½¿ªÍ·
+  tokenHeader: Authorization #JWTå­˜å‚¨çš„è¯·æ±‚å¤´
+  secret: mall-portal-secret #JWTåŠ è§£å¯†ä½¿ç”¨çš„å¯†é’¥
+  expiration: 604800 #JWTçš„è¶…æœŸé™æ—¶é—´(60*60*24)
+  tokenHead: bearer #JWTè´Ÿè½½ä¸­æ‹¿åˆ°å¼€å¤´
 
-# ×Ô¶¨Òåredis¼üÖµ
+# è‡ªå®šä¹‰redisé”®å€¼
 redis:
   key:
     prefix:
       authCode: "portal:authCode:"
       orderId: "portal:orderId:"
     expire:
-      authCode: 90 # ÑéÖ¤Âë³¬ÆÚÊ±¼ä
-
-
-
-
+      authCode: 90 # éªŒè¯ç è¶…æœŸæ—¶é—´

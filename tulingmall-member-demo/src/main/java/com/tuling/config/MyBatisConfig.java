@@ -1,4 +1,4 @@
-package com.tuling.tulingmall.config;
+package com.tuling.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
