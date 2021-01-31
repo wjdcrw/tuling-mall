@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tuling.tulingmall.dao.MiaoShaStockDao">
+
+    <!--<update id="descStock">
+        UPDATE sms_flash_promotion_product_relation
+          SET flash_promotion_count = flash_promotion_count-1
+        WHERE
+          id = #{id} and flash_promotion_count>0
+    </update>-->
+
+    <update id="descStockInVersion">
+        UPDATE sms_flash_promotion_product_relation
+          SET flash_promotion_count=#{newStock}
+        WHERE
+            id = #{id} and flash_promotion_count=#{oldStock}
+    </update>
+
+    <update id="descStockInLock">
+        UPDATE sms_flash_promotion_product_relation
+          SET flash_promotion_count=#{stock}
+        WHERE
+          id = #{id}
+    </update>
+
+    <select id="selectMiaoShaStock" resultType="java.lang.Integer">
+        select flash_promotion_count from sms_flash_promotion_product_relation where id=#{id}
+    </select>
+
+    <select id="selectMiaoShaStockInLock" resultType="java.lang.Integer">
+        select flash_promotion_count from sms_flash_promotion_product_relation where id=#{id} for UPDATE
+    </select>
+
+    <update id="descStock">
+        UPDATE sms_flash_promotion_product_relation
+        SET flash_promotion_count = CASE
+          WHEN flash_promotion_count>=#{stock} THEN
+            flash_promotion_count - #{stock}
+          ELSE
+            flash_promotion_count
+          END
+        WHERE
+        id = #{id}
+    </update>
+
+</mapper>

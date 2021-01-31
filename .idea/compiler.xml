@@ -12,8 +12,10 @@
         <module name="tulingmall-common" />
         <module name="tulingmall-mbg" />
         <module name="tulingmall-getway-demo" />
+        <module name="tulingmall-order" />
         <module name="tulingmall-authcenter-demo" />
         <module name="tulingmall-member-demo" />
+        <module name="tulingmall-product" />
         <module name="tulingmall-security" />
       </profile>
     </annotationProcessing>
@@ -27,7 +29,9 @@
       <module name="tulingmall-getway-demo" options="-parameters" />
       <module name="tulingmall-mbg" options="-parameters" />
       <module name="tulingmall-member-demo" options="-parameters" />
+      <module name="tulingmall-order" options="-parameters" />
       <module name="tulingmall-portal" options="-parameters" />
+      <module name="tulingmall-product" options="-parameters" />
       <module name="tulingmall-security" options="-parameters" />
     </option>
   </component>
