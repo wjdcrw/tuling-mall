@@ -2,9 +2,9 @@ server:
   port: 8855
 spring:
   datasource:
-    url: jdbc:mysql://192.168.159.8:3306/micromall?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
-    username: root
-    password: Zw726515@
+    url: jdbc:mysql://39.107.45.29:3306/micromail?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: admin
+    password: Admin1qaz!@#$
     druid:
       initial-size: 5 #连接池初始化大小
       min-idle: 10 #最小空闲连接数
@@ -19,7 +19,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.159.8:8848
+        server-addr: 39.107.45.29:8848
 mybatis:
   mapper-locations:
     - classpath:dao/*.xml

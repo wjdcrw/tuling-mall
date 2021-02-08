@@ -4,7 +4,6 @@ import com.tuling.tulingmall.common.api.CommonResult;
 import com.tuling.tulingmall.common.constant.RedisKeyPrefixConst;
 import com.tuling.tulingmall.common.exception.BusinessException;
 import com.tuling.tulingmall.component.LocalCache;
-import com.tuling.tulingmall.component.rocketmq.OrderMessageSender;
 import com.tuling.tulingmall.dao.MiaoShaStockDao;
 import com.tuling.tulingmall.domain.*;
 import com.tuling.tulingmall.feignapi.pms.PmsProductFeignApi;
@@ -60,8 +59,6 @@ public class SecKillOrderServiceImpl implements SecKillOrderService {
     private String REDIS_KEY_PREFIX_ORDER_ID;
     @Autowired
     private TradeService tradeService;
-    @Autowired
-    private OrderMessageSender orderMessageSender;
 
     /**
      * 秒杀订单确认信息
@@ -275,7 +272,8 @@ public class SecKillOrderServiceImpl implements SecKillOrderService {
         result.put("order",order);
         result.put("orderItemList",itemList);
         try {
-            boolean sendStatus = orderMessageSender.sendCreateOrderMsg(orderMessage);
+//            boolean sendStatus = orderMessageSender.sendCreateOrderMsg(orderMessage);
+            boolean sendStatus =false;
             if(sendStatus){
                 /*
                  * 打上排队的标记
@@ -341,7 +339,8 @@ public class SecKillOrderServiceImpl implements SecKillOrderService {
          * 如果订单创建成功,需要发送定时消息,20min后如果没有支付,则取消当前订单,释放库存
          */
         try {
-            boolean sendStatus = orderMessageSender.sendTimeOutOrderMessage(order.getId() + ":" + flashPromotionRelationId + ":" + orderItem.getProductId());
+//            boolean sendStatus = orderMessageSender.sendTimeOutOrderMessage(order.getId() + ":" + flashPromotionRelationId + ":" + orderItem.getProductId());
+            boolean sendStatus =false;
             if (!sendStatus) {
                 throw new RuntimeException("订单超时取消消息发送失败！");
             }
@@ -370,9 +369,9 @@ public class SecKillOrderServiceImpl implements SecKillOrderService {
                  * 这里这么做的目的非常重要：确保不会发生少卖现象
                  * 发延时消息,60s后,同步一次库存; 高并发下可能发送多条延时消息，但是没关系，可以容忍
                  */
-                if(orderMessageSender.sendStockSyncMessage(productId,promotionId)){
-                    redisOpsUtil.set(RedisKeyPrefixConst.STOCK_REFRESHED_MESSAGE_PREFIX + promotionId,0);
-                }
+//                if(orderMessageSender.sendStockSyncMessage(productId,promotionId)){
+//                    redisOpsUtil.set(RedisKeyPrefixConst.STOCK_REFRESHED_MESSAGE_PREFIX + promotionId,0);
+//                }
             }
             return false;
         }

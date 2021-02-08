@@ -2,7 +2,7 @@ spring:
   cloud:
     nacos:
       config:
-        server-addr: 47.111.191.111:8848
+        server-addr: 39.107.45.29:8848
         file-extension: yml
         shared-dataids: tulingmall-db-common.yml,tulingmall-nacos.yml
         refreshable-dataids: tulingmall-db-common.yml,tulingmall-nacos.yml

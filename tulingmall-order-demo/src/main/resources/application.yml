@@ -14,6 +14,7 @@ spring:
       stat-view-servlet: #访问监控网页的登录用户名和密码
         login-username: druid
         login-password: druid
+    type: com.alibaba.druid.pool.DruidDataSource
 
   redis:
     host: 39.107.45.29 # Redis服务器地址
@@ -35,7 +36,7 @@ spring:
     password: admin
     publisher-confirms: true #如果对异步消息需要回调必须设置为true
   application:
-    name: tulingmall-order
+    name: tulingmall-order-demo
   cloud:
     nacos:
       discovery:
@@ -46,6 +47,14 @@ mybatis:
   mapper-locations:
     - classpath:dao/*.xml
     - classpath*:com/**/mapper/*.xml
+management: #开启SpringBoot Admin的监控
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
 
 feign:
   client:
@@ -87,3 +96,16 @@ trade:
       storePath: D:/temp/qr-code
       httpBasePath: /static/qrcode
       paySuccessCallBack: http://yangguo.natapp1.cc/order/paySuccess
+
+seata:
+  config:
+    nacos:
+      server-addr: 39.107.45.29:8848
+    type: nacos
+  registry:
+    type: nacos
+  tx-service-group: prex_tx_grop
+  client:
+    support:
+      spring:
+        datasource-autoproxy: true

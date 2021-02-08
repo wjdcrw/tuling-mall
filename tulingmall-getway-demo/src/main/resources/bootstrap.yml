@@ -4,6 +4,9 @@ spring:
   profiles:
     active: dev
   cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:9998
     nacos:
       config:
         server-addr: 39.107.45.29:8848

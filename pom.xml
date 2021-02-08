@@ -19,11 +19,15 @@
 		<module>tulingmall-common</module>
 		<module>tulingmall-mbg</module>
 		<module>tulingmall-security</module>
-		<module>tulingmall-authcenter</module>
+		<!--<module>tulingmall-authcenter</module>-->
 		<module>tulingmall-authcenter-demo</module>
 		<module>tulingmall-portal</module>
 		<module>tulingmall-order</module>
 		<module>tulingmall-product</module>
+		<module>tulingmall-getway-demo</module>
+		<module>tulingmall-order-demo</module>
+		<module>tulingmall-product-demo</module>
+		<module>tulingmall-coupons</module>
 	</modules>
 
 	<properties>

@@ -17,6 +17,7 @@ import com.tuling.tulingmall.service.OmsCartItemService;
 import com.tuling.tulingmall.service.OmsPortalOrderService;
 import com.tuling.tulingmall.service.RedisService;
 //import io.seata.spring.annotation.GlobalTransactional;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -146,8 +147,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
      * @return
      */
     @Override
-    //@GlobalTransactional(name = "generateOrder",rollbackFor = Exception.class)
-    @Transactional
+    @GlobalTransactional(name = "generateOrder",rollbackFor = Exception.class)
+//    @Transactional
     public CommonResult generateOrder(OrderParam orderParam,Long memberId) throws BusinessException {
         List<OmsOrderItem> orderItemList = new ArrayList<>();
 

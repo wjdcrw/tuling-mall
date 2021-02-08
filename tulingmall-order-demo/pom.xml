@@ -59,13 +59,13 @@
 		</dependency>
 
 		<!-- sharding 分库分表-->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.apache.shardingsphere</groupId>
 			<artifactId>sharding-jdbc-spring-boot-starter</artifactId>
 			<version>4.0.1</version>
-		</dependency>
+		</dependency>-->
 		<!-- transaction 2pc XA 2阶段提交分布式事务 -->
-		<dependency>
+	<!--	<dependency>
 			<groupId>org.apache.shardingsphere</groupId>
 			<artifactId>sharding-transaction-xa-core</artifactId>
 			<version>4.0.1</version>
@@ -75,7 +75,7 @@
 					<groupId>org.slf4j</groupId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency>-->
 
 		<!-- Base - 基于华为servicecomb的saga柔性事务,shardingjdbc正式版之后没有进行维护,需要自己重构saga工程 -->
 		<!--<dependency>
@@ -97,17 +97,17 @@
         </dependency>-->
 
 		<!--mybatis-->
-		<dependency>
+		<!--<dependency>
 			<groupId>com.tuling</groupId>
 			<artifactId>tulingmall-mbg</artifactId>
-			<!-- 引入分库分表插件shardingsphere 后需要排除此处，单独引入druid -->
+			&lt;!&ndash; 引入分库分表插件shardingsphere 后需要排除此处，单独引入druid &ndash;&gt;
 			<exclusions>
 				<exclusion>
 					<artifactId>druid-spring-boot-starter</artifactId>
 					<groupId>com.alibaba</groupId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -172,7 +172,7 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!--<dependency>
+		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-seata</artifactId>
 			<exclusions>
@@ -193,8 +193,12 @@
 			<groupId>io.seata</groupId>
 			<artifactId>seata-spring-boot-starter</artifactId>
 			<version>1.0.0</version>
-		</dependency>-->
+		</dependency>
 
+		<dependency>
+			<groupId>com.tuling</groupId>
+			<artifactId>tulingmall-mbg</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

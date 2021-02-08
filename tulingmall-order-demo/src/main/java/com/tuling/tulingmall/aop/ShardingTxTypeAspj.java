@@ -1,8 +1,8 @@
 package com.tuling.tulingmall.aop;
 
-import org.apache.shardingsphere.transaction.annotation.ShardingTransactionType;
+/*import org.apache.shardingsphere.transaction.annotation.ShardingTransactionType;
 import org.apache.shardingsphere.transaction.core.TransactionType;
-import org.apache.shardingsphere.transaction.core.TransactionTypeHolder;
+import org.apache.shardingsphere.transaction.core.TransactionTypeHolder;*/
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -36,7 +36,7 @@ import java.util.Arrays;
 @Order(-1)
 public class ShardingTxTypeAspj {
 
-    @Pointcut(value = "execution(* com.tuling.tulingmall.service.impl.Transaction2PcServiceImpl.insertOrder(..))")
+    /*@Pointcut(value = "execution(* com.tuling.tulingmall.service.impl.Transaction2PcServiceImpl.insertOrder(..))")
     public void pointCut(){
 
     }
@@ -50,5 +50,5 @@ public class ShardingTxTypeAspj {
         ShardingTransactionType declaredAnnotation = methodSignature.getMethod().getDeclaredAnnotation(ShardingTransactionType.class);
         System.out.println(declaredAnnotation.value());
         TransactionTypeHolder.set(declaredAnnotation.value());
-    }
+    }*/
 }

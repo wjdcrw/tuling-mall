@@ -2,8 +2,8 @@ package com.tuling.tulingmall.controller;
 
 import com.tuling.tulingmall.common.api.CommonResult;
 import com.tuling.tulingmall.service.impl.Transaction2PcServiceImpl;
-import org.apache.shardingsphere.transaction.core.TransactionType;
-import org.apache.shardingsphere.transaction.core.TransactionTypeHolder;
+/*import org.apache.shardingsphere.transaction.core.TransactionType;
+import org.apache.shardingsphere.transaction.core.TransactionTypeHolder;*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;

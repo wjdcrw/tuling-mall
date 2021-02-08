@@ -1,5 +1,6 @@
 package com.tuling.tulingmall.config;
 
+import io.seata.rm.datasource.DataSourceProxy;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
@@ -32,7 +33,7 @@ public class MyBatisConfig {
         return new DataSourceTransactionManager(dataSource);
     }
 
-    /*@Autowired
+    @Autowired
     private MybatisProperties mybatisProperties;
 
 
@@ -60,7 +61,7 @@ public class MyBatisConfig {
             }
         }
         return resources.toArray(new Resource[resources.size()]);
-    }*/
+    }
 
 
 

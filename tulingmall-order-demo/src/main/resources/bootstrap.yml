@@ -7,6 +7,6 @@ spring:
         shared-dataids: tulingmall-nacos.yml
         refreshable-dataids: tulingmall-nacos.yml
   application:
-    name: tulingmall-order
+    name: tulingmall-order-demo
   profiles:
     active: dev

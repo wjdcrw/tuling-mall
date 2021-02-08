@@ -1,6 +1,6 @@
 spring:
   application:
-    name: tulingmall-product
+    name: tulingmall-product-demo
   cloud:
       nacos:
         config:

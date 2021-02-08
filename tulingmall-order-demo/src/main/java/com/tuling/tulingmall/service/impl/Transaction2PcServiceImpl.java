@@ -5,9 +5,9 @@ import com.tuling.tulingmall.mapper.OmsOrderMapper;
 import com.tuling.tulingmall.model.OmsOrder;
 import com.tuling.tulingmall.model.OmsOrderExample;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shardingsphere.transaction.annotation.ShardingTransactionType;
+/*import org.apache.shardingsphere.transaction.annotation.ShardingTransactionType;
 import org.apache.shardingsphere.transaction.core.TransactionType;
-import org.apache.shardingsphere.transaction.core.TransactionTypeHolder;
+import org.apache.shardingsphere.transaction.core.TransactionTypeHolder;*/
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,7 +42,7 @@ public class Transaction2PcServiceImpl {
     private DataSource dataSource;
 
     @Transactional
-    @ShardingTransactionType(TransactionType.XA)
+//    @ShardingTransactionType(TransactionType.XA)
     public CommonResult insertOrder(){
         OmsOrder omsOrder = new OmsOrder();
         omsOrder.setMemberId(1L);
