@@ -95,7 +95,7 @@ trade:
       weChatPath: /wechat
       storePath: D:/temp/qr-code
       httpBasePath: /static/qrcode
-      paySuccessCallBack: http://yangguo.natapp1.cc/order/paySuccess
+      paySuccessCallBack: http://wjdcrw.natapp1.cc/order/paySuccess
 
 seata:
   config:
