@@ -6,7 +6,12 @@ import com.tuling.tulingmall.component.LocalCache;
 import com.tuling.tulingmall.component.zklock.ZKLock;
 import com.tuling.tulingmall.dao.FlashPromotionProductDao;
 import com.tuling.tulingmall.dao.PortalProductDao;
-import com.tuling.tulingmall.domain.*;
+import com.tuling.tulingmall.domain.CartProduct;
+import com.tuling.tulingmall.domain.FlashPromotionParam;
+import com.tuling.tulingmall.domain.FlashPromotionProduct;
+import com.tuling.tulingmall.domain.FlashPromotionSessionExt;
+import com.tuling.tulingmall.domain.PmsProductParam;
+import com.tuling.tulingmall.domain.PromotionProduct;
 import com.tuling.tulingmall.mapper.SmsFlashPromotionMapper;
 import com.tuling.tulingmall.mapper.SmsFlashPromotionSessionMapper;
 import com.tuling.tulingmall.model.SmsFlashPromotion;
@@ -65,7 +70,7 @@ public class PmsProductServiceImpl implements PmsProductService {
     @Autowired
     private RedisOpsUtil redisOpsUtil;
 
-    private Map<String,PmsProductParam> cacheMap = new ConcurrentHashMap<>();
+    private Map<String, PmsProductParam> cacheMap = new ConcurrentHashMap<>();
 
     @Autowired
     private LocalCache cache;
@@ -85,7 +90,7 @@ public class PmsProductServiceImpl implements PmsProductService {
     public PmsProductParam getProductInfo(Long id){
         PmsProductParam productInfo = null;
         productInfo = cache.get(RedisKeyPrefixConst.PRODUCT_DETAIL_CACHE + id);
-        //一级缓存
+        //一级缓存(本地) 节省网络上的开销
         if(productInfo != null){
             return productInfo;
         }
@@ -99,7 +104,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         }
 
         if(zkLock.lock(lockPath + "_" + id)) {
-            //todo 查询商品详情信息
+            //查询商品详情信息
             productInfo = portalProductDao.getProductInfo(id);
             if (productInfo == null) {
                 return null;
@@ -119,9 +124,9 @@ public class PmsProductServiceImpl implements PmsProductService {
                 productInfo.setFlashPromotionStatus(promotion.getStatus());
             }
 
-            //todo 缓存到一级缓存
+            //缓存到一级缓存
             cache.setLocalCache(RedisKeyPrefixConst.PRODUCT_DETAIL_CACHE + id, productInfo);
-            //todo 商品信息缓存到reids当中，缓存被动更新
+            //商品信息缓存到reids当中，缓存被动更新
             redisOpsUtil.set(RedisKeyPrefixConst.PRODUCT_DETAIL_CACHE + id, productInfo, 3600, TimeUnit.SECONDS);
             zkLock.unlock(lockPath + "_" + id);
         }else{

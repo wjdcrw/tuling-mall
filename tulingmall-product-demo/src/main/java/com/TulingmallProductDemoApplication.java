@@ -1,4 +1,4 @@
-package com.tulingmall;
+package com.tuling.tulingmall;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

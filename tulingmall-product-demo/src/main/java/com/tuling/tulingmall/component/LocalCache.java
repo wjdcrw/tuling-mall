@@ -10,10 +10,6 @@ import javax.annotation.PostConstruct;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author ：杨过
- * @date ：Created in 2020/2/17
- * @version: V1.0
- * @slogan: 天下风云出我辈，一入代码岁月催
  * @description: 缓存管理工具，采用LRU淘汰策略
  **/
 @Slf4j

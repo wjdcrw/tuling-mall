@@ -2,7 +2,6 @@ package com.tuling.tulingmall.service.impl;
 
 
 import com.tuling.tulingmall.common.api.CommonResult;
-import com.tuling.tulingmall.common.constant.RedisKeyPrefixConst;
 import com.tuling.tulingmall.domain.PmsProductParam;
 import com.tuling.tulingmall.mapper.PmsSkuStockMapper;
 import com.tuling.tulingmall.mapper.SmsFlashPromotionProductRelationMapper;
@@ -20,7 +19,6 @@ import org.springframework.util.ObjectUtils;
 
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 /**
