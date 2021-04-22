@@ -6,19 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tulingmall-portal" />
-        <module name="tulingmall-member-demo" />
-        <module name="tulingmall-security" />
+        <module name="tulingmall-authcenter-demo" />
         <module name="tulingmall-authcenter-test" />
         <module name="tulingmall-common" />
-        <module name="tulingmall-mbg" />
         <module name="tulingmall-coupons" />
         <module name="tulingmall-getway-demo" />
-        <module name="tulingmall-product-demo" />
+        <module name="tulingmall-mbg" />
+        <module name="tulingmall-member-demo" />
         <module name="tulingmall-order" />
-        <module name="tulingmall-authcenter-demo" />
-        <module name="tulingmall-product" />
         <module name="tulingmall-order-demo" />
+        <module name="tulingmall-portal" />
+        <module name="tulingmall-product" />
+        <module name="tulingmall-product-demo" />
+        <module name="tulingmall-security" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

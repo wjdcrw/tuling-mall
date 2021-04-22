@@ -87,6 +87,7 @@ public class PmsProductServiceImpl implements PmsProductService {
      * 获取商品详情信息
      * @param id 产品ID
      */
+    @Override
     public PmsProductParam getProductInfo(Long id){
         PmsProductParam productInfo = null;
         productInfo = cache.get(RedisKeyPrefixConst.PRODUCT_DETAIL_CACHE + id);
@@ -144,6 +145,7 @@ public class PmsProductServiceImpl implements PmsProductService {
      * @param flashPromotionId 秒杀活动ID，关联秒杀活动设置
      * @param sessionId 场次活动ID，for example：13:00-14:00场等
      */
+    @Override
     public List<FlashPromotionProduct> getFlashProductList(Integer pageSize, Integer pageNum, Long flashPromotionId, Long sessionId){
         PageHelper.startPage(pageNum,pageSize,"sort desc");
         return flashPromotionProductDao.getFlashProductList(flashPromotionId,sessionId);
@@ -153,6 +155,7 @@ public class PmsProductServiceImpl implements PmsProductService {
      * 获取当前日期秒杀活动所有场次
      * @return
      */
+    @Override
     public List<FlashPromotionSessionExt> getFlashPromotionSessionList(){
         Date now = new Date();
         SmsFlashPromotion promotion = getFlashPromotion(now);
@@ -206,6 +209,7 @@ public class PmsProductServiceImpl implements PmsProductService {
      * 获取首页的秒杀商品列表
      * @return
      */
+    @Override
     public List<FlashPromotionProduct> getHomeSecKillProductList(){
         PageHelper.startPage(1,8,"sort desc");
         FlashPromotionParam flashPromotionParam = flashPromotionProductDao.getFlashPromotion(null);
@@ -234,6 +238,7 @@ public class PmsProductServiceImpl implements PmsProductService {
      * 查找出所有的产品ID
      * @return
      */
+    @Override
     public List<Long> getAllProductId(){
         return portalProductDao.getAllProductId();
     }
