@@ -81,6 +81,7 @@ public class RedisConifg {
 
     @Bean
     ChannelTopic channelTopic(){
+        //秒杀补偿机制中需要监听的channel
         return new ChannelTopic("cleanNoStockCache");
     }
 
